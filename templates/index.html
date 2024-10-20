@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Summarization</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .btn {
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .summary-box {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e9ecef;
+            border-radius: 8px;
+            white-space: pre-wrap;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Text Summarization</h1>
+        <form method="POST">
+            <label for="text">Enter text to summarize:</label>
+            <textarea name="text" id="text" placeholder="Enter your text here..." required></textarea>
+            <button type="submit" class="btn">Summarize</button>
+        </form>
+
+        <!-- Display error if any -->
+        {% if error %}
+        <p class="error">{{ error }}</p>
+        {% endif %}
+
+        <!-- Display summary if available -->
+        {% if summary %}
+        <div class="summary-box">
+            <h2>Summary:</h2>
+            <p>{{ summary }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
